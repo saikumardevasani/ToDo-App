@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<style>
+
+body{
+  background-color: wheat;
+}
+
+.center-column{
+    width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: mediumseagreen;
+    border-radius: 3px;
+    box-shadow: 6px 2px 3px 0px rgba(0,0,0, 0.75);
+}
+
+</style>
+
+<div class="card-panel grey lighten-3 center-column">
+         <p class="center">Are you sure you want to delete "{{item}}" ?</p>
+
+         <a href="{% url 'tasks' %}" class="waves-effect waves-teal btn-flat  red accent-3 white-text right">Cancel</a>
+
+        <form method="POST" action="">
+               {% csrf_token %}
+               <input class="waves-effect waves-teal btn-flat  green accent-3 white-text" type="submit" name='confirm' value="confirm">
+        </form>
+</div>

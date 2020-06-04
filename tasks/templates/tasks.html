@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+<style>
+
+  body{
+    background-color: wheat;
+  }
+
+
+  input{
+    width:100%;
+    padding: 12px 20px;
+    margin: 8px 0px;
+    box-sizing: border-box;
+  }
+
+  input::placeholder{
+    color:#d3d3d3
+  }
+
+  .submit{
+    background-color:68A3E8;
+  }
+
+  .center-column{
+    width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: mediumseagreen;
+    border-radius: 3px;
+    box-shadow: 6px 2px 3px 0px rgba(0,0,0, 0.75);
+  }
+</style>
+
+
+<div class="center-column">
+<form method="POST" action="/">
+    {% csrf_token %}
+    {{form.title}}
+    <input class="waves-effect waves-teal btn-flat  green accent-3 white-text" type="submit" name="create task">
+</form>
+
+
+{% for task in tasks %}
+  <div class="card-panel grey lighten-3">
+    <a href="{% url 'update_task' task.id %}" class="waves-effect waves-teal btn-flat  green accent-3 white-text">Update</a>
+    <a href="{% url 'delete' task.id %}" class="waves-effect waves-teal btn-flat red accent-4 white-text">Delete</a>
+
+    {% if task.complete == True %}
+    <strike class="black-text right">{{task}}</strike>
+    {% else %}
+    <span class="black-text right">{{task}}</span>
+    {% endif %}
+  </div>
+{% endfor %}
+</div>

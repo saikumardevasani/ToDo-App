@@ -1,0 +1,47 @@
+<style>
+
+body{
+  background-color: wheat;
+}
+
+.center-column{
+    width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 3px;
+    box-shadow: 6px 2px 3px 0px rgba(0,0,0, 0.75);
+    flex: auto;
+}
+.text{
+    width:100%;
+    padding: 12px 20px;
+    margin: 8px 0px;
+    border:0px 1px 0px 0px;
+    box-sizing: border-box;
+
+  }
+  .complete{
+      font-size: 16px;  
+      }
+  .update{
+      float: Right;
+      color: white;
+      font-size: 16px;
+      text-align: center;
+      padding: 12px;
+      background-color: #00ff7f;
+      border: none;
+      border-radius: 3px;
+ }    
+</style>
+
+<div class="center-column">
+    <form  method="POST" action="">
+        {% csrf_token %}
+        {{form.title}}
+        <label class="complete">Complete</label>
+        {{form.complete}}
+        <input class="update" type="submit" name="Update Task" value="Update">
+    </form>
+</div>
